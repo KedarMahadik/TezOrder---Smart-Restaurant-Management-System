@@ -1,5 +1,6 @@
-
 import React, { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -21,16 +22,22 @@ import {
   TableRow 
 } from "@/components/ui/table";
 import QRCodeGenerator from "@/components/QRCodeGenerator";
-import Header from "@/components/Header";
 import { useOrders } from "@/contexts/OrderContext";
 import { OrderStatus } from "@/lib/types";
 import { Search, Package, Clock, Check, ChefHat, X } from "lucide-react";
+import DashboardLayout from "@/components/DashboardLayout";
 
 const Dashboard = () => {
+  const { isAuthenticated } = useAuth();
   const { orders, updateOrderStatus } = useOrders();
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredOrders, setFilteredOrders] = useState(orders);
   const [activeTab, setActiveTab] = useState<OrderStatus | "all">("all");
+  
+  // Redirect to login if not authenticated
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
   
   useEffect(() => {
     let result = [...orders];
@@ -122,14 +129,14 @@ const Dashboard = () => {
   };
   
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      
-      <main className="flex-1 page-container">
-        <h1 className="text-3xl font-bold mb-2">Manager Dashboard</h1>
-        <p className="text-muted-foreground mb-8">
-          Monitor orders and manage restaurant operations
-        </p>
+    <DashboardLayout>
+      <div className="space-y-6">
+        <div>
+          <h1 className="text-3xl font-bold">Manager Dashboard</h1>
+          <p className="text-muted-foreground">
+            Monitor orders and manage restaurant operations
+          </p>
+        </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <Card className="lg:col-span-2">
@@ -267,8 +274,8 @@ const Dashboard = () => {
             <QRCodeGenerator />
           </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </DashboardLayout>
   );
 };
 

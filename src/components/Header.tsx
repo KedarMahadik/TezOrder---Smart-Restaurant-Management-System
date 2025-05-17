@@ -3,11 +3,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { LogOut, Menu, ShoppingBag } from "lucide-react";
+import { LogOut, Menu, ShoppingBag, LogIn } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Cart } from "@/components/Cart";
 import { useHotel } from "@/contexts/HotelContext";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface HeaderProps {
   tableNumber?: number;
@@ -17,9 +18,11 @@ const Header = ({ tableNumber }: HeaderProps) => {
   const location = useLocation();
   const { items } = useCart();
   const { config } = useHotel();
+  const { isAuthenticated, logout } = useAuth();
   const totalItems = items.reduce((acc, item) => acc + item.quantity, 0);
   
   const isDashboard = location.pathname === "/dashboard";
+  const isLoginPage = location.pathname === "/login";
   
   return (
     <header className="sticky top-0 z-10 bg-background/80 backdrop-blur-lg border-b border-border py-4">
@@ -35,20 +38,32 @@ const Header = ({ tableNumber }: HeaderProps) => {
           )}
           
           {isDashboard ? (
-            <Link to="/">
-              <Button variant="ghost" size="sm">
-                <LogOut className="h-4 w-4 mr-2" />
-                Exit Dashboard
-              </Button>
-            </Link>
+            <Button variant="ghost" size="sm" onClick={() => {
+              logout();
+              window.location.href = "/";
+            }}>
+              <LogOut className="h-4 w-4 mr-2" />
+              Exit Dashboard
+            </Button>
           ) : (
             <>
-              <Link to="/dashboard">
-                <Button variant="ghost" size="sm" className="hidden md:flex">
-                  <Menu className="h-4 w-4 mr-2" />
-                  Dashboard
-                </Button>
-              </Link>
+              {!isLoginPage && !isAuthenticated && (
+                <Link to="/login">
+                  <Button variant="ghost" size="sm">
+                    <LogIn className="h-4 w-4 mr-2" />
+                    Manager Login
+                  </Button>
+                </Link>
+              )}
+              
+              {isAuthenticated && (
+                <Link to="/dashboard">
+                  <Button variant="ghost" size="sm">
+                    <Menu className="h-4 w-4 mr-2" />
+                    Dashboard
+                  </Button>
+                </Link>
+              )}
               
               {location.pathname.includes('/menu') && (
                 <Sheet>
