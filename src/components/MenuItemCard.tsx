@@ -5,7 +5,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MenuItem } from "@/lib/types";
 import { useCart } from "@/contexts/CartContext";
-import { Plus, Info, Clock, Flame } from "lucide-react";
+import { Plus, Info, Clock, Flame, IndianRupee } from "lucide-react";
 import { 
   Collapsible,
   CollapsibleContent,
@@ -51,7 +51,10 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
       <CardContent className="p-0">
         <div className="flex justify-between items-start mb-2">
           <h3 className="font-medium text-lg line-clamp-1">{item.name}</h3>
-          <span className="text-primary font-semibold">₹{item.price.toFixed(2)}</span>
+          <span className="text-primary font-semibold flex items-center">
+            <IndianRupee className="h-3 w-3 mr-1" />
+            {item.price.toFixed(0)}
+          </span>
         </div>
         
         <p className="text-sm text-muted-foreground line-clamp-2 mb-2">

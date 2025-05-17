@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { LogOut, Menu, ShoppingBag, LogIn } from "lucide-react";
+import { LogOut, Menu, ShoppingBag, LogIn, Hotel } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Cart } from "@/components/Cart";
@@ -28,7 +28,7 @@ const Header = ({ tableNumber }: HeaderProps) => {
     <header className="sticky top-0 z-10 bg-background/80 backdrop-blur-lg border-b border-border py-4">
       <div className="container flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <ShoppingBag className="h-6 w-6 text-primary" />
+          <Hotel className="h-6 w-6 text-primary" />
           <span className="text-xl font-bold gradient-text">{config.name}</span>
         </Link>
         

@@ -8,7 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Slider } from "@/components/ui/slider";
 import MenuItemCard from "@/components/MenuItemCard";
 import Header from "@/components/Header";
-import { Search } from "lucide-react";
+import { Search, IndianRupee } from "lucide-react";
 
 const categories: { value: Category; label: string }[] = [
   { value: "starters", label: "Starters" },
@@ -30,7 +30,7 @@ const MenuPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<Category | "all">("all");
   const [dietaryFilter, setDietaryFilter] = useState<DietaryTag | "all">("all");
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 50]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 2000]);
   const [filteredItems, setFilteredItems] = useState<MenuItem[]>(menuItems);
   
   // Extract table number from URL query params
@@ -135,14 +135,14 @@ const MenuPage = () => {
           <div>
             <div className="flex justify-between items-center mb-2">
               <h3 className="text-sm font-medium">Price Range</h3>
-              <span className="text-sm text-muted-foreground">
-                ${priceRange[0].toFixed(2)} - ${priceRange[1].toFixed(2)}
+              <span className="text-sm text-muted-foreground flex items-center">
+                <IndianRupee className="h-3 w-3 mr-1" />{priceRange[0].toFixed(0)} - <IndianRupee className="h-3 w-3 mr-1" />{priceRange[1].toFixed(0)}
               </span>
             </div>
             <Slider
               min={minPrice}
               max={maxPrice}
-              step={0.5}
+              step={50}
               value={priceRange}
               onValueChange={(value) => setPriceRange(value as [number, number])}
             />
