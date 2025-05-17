@@ -37,3 +37,15 @@ export interface Review {
   comment: string;
   timestamp: string;
 }
+
+// Hotel configuration
+export interface HotelConfig {
+  name: string;
+  logo: string;
+  tagline?: string;
+  contact?: {
+    phone?: string;
+    email?: string;
+    address?: string;
+  };
+}

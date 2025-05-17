@@ -7,6 +7,7 @@ import { LogOut, Menu, ShoppingBag } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Cart } from "@/components/Cart";
+import { useHotel } from "@/contexts/HotelContext";
 
 interface HeaderProps {
   tableNumber?: number;
@@ -15,6 +16,7 @@ interface HeaderProps {
 const Header = ({ tableNumber }: HeaderProps) => {
   const location = useLocation();
   const { items } = useCart();
+  const { config } = useHotel();
   const totalItems = items.reduce((acc, item) => acc + item.quantity, 0);
   
   const isDashboard = location.pathname === "/dashboard";
@@ -24,7 +26,7 @@ const Header = ({ tableNumber }: HeaderProps) => {
       <div className="container flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <ShoppingBag className="h-6 w-6 text-primary" />
-          <span className="text-xl font-bold gradient-text">Lovable.AO</span>
+          <span className="text-xl font-bold gradient-text">{config.name}</span>
         </Link>
         
         <div className="flex items-center gap-3">

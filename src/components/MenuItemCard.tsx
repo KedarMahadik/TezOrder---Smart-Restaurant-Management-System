@@ -21,12 +21,12 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
   };
   
   return (
-    <Card className="menu-card">
+    <Card className="menu-card hover-scale glass-card">
       <div className="relative h-48 overflow-hidden rounded-md mb-3">
         <img 
           src={item.imageUrl} 
           alt={item.name}
-          className="object-cover w-full h-full" 
+          className="object-cover w-full h-full transition-transform duration-300 hover:scale-110" 
         />
         <Badge className={`absolute top-2 right-2 ${dietaryColor[item.dietaryTag]}`}>
           {item.dietaryTag}
@@ -56,7 +56,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
       </CardContent>
       
       <CardFooter className="p-0 mt-3">
-        <Button onClick={() => addToCart(item)} className="w-full">
+        <Button onClick={() => addToCart(item)} className="w-full transition-colors duration-300">
           <Plus className="h-4 w-4 mr-2" />
           Add to Order
         </Button>
