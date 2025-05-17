@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useHotel } from "@/contexts/HotelContext";
 import { ArrowRight, Utensils, QrCode, Clock, Star } from "lucide-react";
 import Header from "@/components/Header";
+import TableSelector from "@/components/TableSelector";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Index = () => {
       <Header />
       
       <main className="flex-1 page-container">
-        <section className="py-12 md:py-24 lg:py-32 xl:py-48">
+        <section className="py-12 md:py-24 lg:py-32 xl:py-36">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
               <div className="space-y-4">
@@ -26,6 +27,9 @@ const Index = () => {
                 <p className="max-w-[600px] text-muted-foreground md:text-xl">
                   {config.tagline}
                 </p>
+                <div className="py-6">
+                  <TableSelector />
+                </div>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Button 
                     size="lg" 
@@ -46,11 +50,19 @@ const Index = () => {
                 </div>
               </div>
               <div className="flex items-center justify-center">
-                <img
-                  src="/placeholder.svg"
-                  alt="Hotel Image"
-                  className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
-                />
+                {config.heroImage ? (
+                  <img
+                    src={config.heroImage}
+                    alt="SRM Hotel"
+                    className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last shadow-lg"
+                  />
+                ) : (
+                  <img
+                    src="/placeholder.svg"
+                    alt="Hotel Image"
+                    className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
+                  />
+                )}
               </div>
             </div>
           </div>

@@ -14,6 +14,11 @@ export interface MenuItem {
   dietaryTag: DietaryTag;
   rating: number;
   reviewCount: number;
+  description?: string;
+  cookingTime?: string;
+  spicyLevel?: "mild" | "medium" | "hot" | "extra hot";
+  calories?: number;
+  allergens?: string[];
 }
 
 export interface CartItem extends MenuItem {
@@ -43,6 +48,7 @@ export interface HotelConfig {
   name: string;
   logo: string;
   tagline?: string;
+  heroImage?: string;
   contact?: {
     phone?: string;
     email?: string;

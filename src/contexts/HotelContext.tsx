@@ -7,10 +7,11 @@ const defaultHotelConfig: HotelConfig = {
   name: "SRM Hotel",
   logo: "/placeholder.svg", 
   tagline: "Experience Luxury & Comfort",
+  heroImage: "/lovable-uploads/31047660-358c-4dcb-800a-d2bb67ec8159.png",
   contact: {
-    phone: "+1 234 567 890",
+    phone: "+91 1234 567 890",
     email: "contact@srmhotel.com",
-    address: "123 Main Street, City, Country"
+    address: "123 Main Street, City, India"
   }
 };
 

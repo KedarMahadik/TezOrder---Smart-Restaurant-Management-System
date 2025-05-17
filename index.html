@@ -21,6 +21,44 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+      :root {
+        --font-sans: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      }
+      
+      body {
+        font-family: var(--font-sans);
+      }
+      
+      .gradient-text {
+        background: linear-gradient(to right, #f59e0b, #d97706);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .glass-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .hover-scale {
+        transition: transform 0.3s ease;
+      }
+      
+      .hover-scale:hover {
+        transform: scale(1.03);
+      }
+      
+      .page-container {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 1rem;
+      }
+    </style>
   </head>
 
   <body>
