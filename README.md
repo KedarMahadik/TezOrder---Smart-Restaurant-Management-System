@@ -1,4 +1,5 @@
-# Welcome to your Lovable project
+# Smart Restaurant Management System with QR Code Ordering
+
 
 ## Project info
 
