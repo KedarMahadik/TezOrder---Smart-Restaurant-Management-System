@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useHotel } from "@/contexts/HotelContext";
 import { ArrowRight, Utensils, QrCode, Clock, Star } from "lucide-react";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import TableSelector from "@/components/TableSelector";
 
 const Index = () => {
@@ -146,27 +147,7 @@ const Index = () => {
         </section>
       </main>
       
-      <footer className="border-t py-6">
-        <div className="container flex flex-col md:flex-row items-center justify-between gap-4 px-4 md:px-6">
-          <div className="flex items-center gap-2">
-            <Utensils className="h-6 w-6 text-primary" />
-            <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} {config.name}. All rights reserved.
-            </p>
-          </div>
-          <div className="flex gap-4">
-            <Button variant="ghost" size="sm">
-              Contact
-            </Button>
-            <Button variant="ghost" size="sm">
-              About
-            </Button>
-            <Button variant="ghost" size="sm">
-              Privacy
-            </Button>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
