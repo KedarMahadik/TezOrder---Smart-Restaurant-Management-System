@@ -77,14 +77,14 @@ const MenuPage = () => {
       <Header tableNumber={tableNumber} />
       
       <main className="flex-1 page-container">
-        <div className="mb-8">
+        <div className="mb-6">
           <h1 className="text-3xl font-bold mb-2">Our Menu</h1>
           <p className="text-muted-foreground">
             Browse our selection of delicious dishes and place your order
           </p>
         </div>
         
-        <div className="flex flex-col space-y-6">
+        <div className="flex flex-col space-y-4">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
@@ -95,7 +95,7 @@ const MenuPage = () => {
             />
           </div>
           
-          <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
+          <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
             <div>
               <h3 className="text-sm font-medium mb-2">Categories</h3>
               <Tabs 
@@ -145,11 +145,12 @@ const MenuPage = () => {
               step={50}
               value={priceRange}
               onValueChange={(value) => setPriceRange(value as [number, number])}
+              className="mt-2"
             />
           </div>
           
           {filteredItems.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-2">
               {filteredItems.map((item) => (
                 <MenuItemCard key={item.id} item={item} />
               ))}

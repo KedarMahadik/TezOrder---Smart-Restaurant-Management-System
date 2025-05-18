@@ -76,6 +76,12 @@
     font-feature-settings: "rlig" 1, "calt" 1;
     font-family: 'Poppins', sans-serif;
   }
+  img {
+    @apply max-w-full h-auto object-cover;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium tracking-tight;
+  }
 }
 
 .menu-card {
@@ -91,7 +97,7 @@
 }
 
 .page-container {
-  @apply container mx-auto px-4 py-8 min-h-screen;
+  @apply container mx-auto px-4 py-4 md:py-6 min-h-screen;
 }
 
 .table-badge {
@@ -125,4 +131,37 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Responsive spacing utilities */
+.section-spacing {
+  @apply py-6 md:py-10 lg:py-16;
+}
+
+.spacing-y {
+  @apply my-4 md:my-6 lg:my-8;
+}
+
+.spacing-x {
+  @apply mx-4 md:mx-6 lg:mx-8;
+}
+
+/* Accessibility improvements */
+.sr-only {
+  @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+}
+
+/* Focus styles for accessibility */
+.focus-visible {
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+}
+
+/* Make sure images in cards maintain aspect ratio and look clear */
+.dish-image {
+  @apply aspect-video object-cover w-full rounded-md;
+}
+
+/* Reduce space between sections */
+.compact-section {
+  @apply py-3 md:py-5;
 }

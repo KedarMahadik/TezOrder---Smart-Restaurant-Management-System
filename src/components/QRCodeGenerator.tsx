@@ -26,7 +26,7 @@ const QRCodeGenerator = () => {
     // Mock download - in a real app, this would be a real download
     const element = document.createElement("a");
     element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(url));
-    element.setAttribute("download", `table-${tableNumber}-qr.png`);
+    element.setAttribute("download", `table-${tableNumber}-qr.jpg`);
     element.style.display = "none";
     document.body.appendChild(element);
     element.click();

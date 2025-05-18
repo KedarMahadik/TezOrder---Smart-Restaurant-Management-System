@@ -24,7 +24,7 @@ import {
 import QRCodeGenerator from "@/components/QRCodeGenerator";
 import { useOrders } from "@/contexts/OrderContext";
 import { OrderStatus } from "@/lib/types";
-import { Search, Package, Clock, Check, ChefHat, X } from "lucide-react";
+import { Search, Package, Clock, Check, ChefHat, X, IndianRupee } from "lucide-react";
 import DashboardLayout from "@/components/DashboardLayout";
 
 const Dashboard = () => {
@@ -180,6 +180,7 @@ const Dashboard = () => {
                         <TableHead>Order ID</TableHead>
                         <TableHead>Table</TableHead>
                         <TableHead>Type</TableHead>
+                        <TableHead>Items</TableHead>
                         <TableHead>Time</TableHead>
                         <TableHead>Amount</TableHead>
                         <TableHead>Status</TableHead>
@@ -193,8 +194,20 @@ const Dashboard = () => {
                             <TableCell className="font-medium">#{order.id}</TableCell>
                             <TableCell>{order.tableNumber}</TableCell>
                             <TableCell>{getOrderTypeIcon(order.orderType)}</TableCell>
+                            <TableCell>
+                              <div className="max-h-20 overflow-y-auto text-xs">
+                                {order.items.map((item, idx) => (
+                                  <div key={idx} className="mb-1">
+                                    {item.quantity}x {item.name}
+                                  </div>
+                                ))}
+                              </div>
+                            </TableCell>
                             <TableCell>{formatDate(order.timestamp)}</TableCell>
-                            <TableCell>${order.total.toFixed(2)}</TableCell>
+                            <TableCell className="flex items-center">
+                              <IndianRupee className="h-3 w-3 mr-1" />
+                              {order.total.toFixed(2)}
+                            </TableCell>
                             <TableCell>{getStatusBadge(order.status)}</TableCell>
                             <TableCell>
                               <div className="flex gap-2">
@@ -223,7 +236,7 @@ const Dashboard = () => {
                         ))
                       ) : (
                         <TableRow>
-                          <TableCell colSpan={7} className="text-center py-8">
+                          <TableCell colSpan={8} className="text-center py-8">
                             No orders found
                           </TableCell>
                         </TableRow>
